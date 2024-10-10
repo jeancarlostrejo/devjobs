@@ -16,6 +16,17 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Rol -->
+        <div class="mt-4">
+            <x-input-label for="rol" :value="__('What type of account do you want to create?')" />
+            <select name="rol" id="rol" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
+                <option value="">---{{ __("Select a rol") }}---</option>
+                <option value="1" {{ old('rol') == \App\Enums\Role::DEVELOPER->value ? "selected" : "" }}>{{ __("Developer") }} - {{ __("Get a job") }}</option>
+                <option value="2" {{ old('rol') == \App\Enums\Role::RECRUITER->value ? "selected" : "" }}>{{ __("Recruiter") }} - {{ __("Post jobs") }}</option>
+            </select>
+            <x-input-error :messages="$errors->get('rol')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

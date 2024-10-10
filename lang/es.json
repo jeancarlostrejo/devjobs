@@ -250,5 +250,11 @@
     "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.",
     "You're logged in!": "¡Usted está conectado!",
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
-    "Create account": "Crear cuenta"
+    "Create account": "Crear cuenta",
+    "What type of account do you want to create?": "¿Qué tipo de cuenta deseas crear?",
+    "Select a rol": "Selecciona un rol",
+    "Developer": "Desarrollador",
+    "Recuriter": "Reclutador",
+    "Get a job": "Obtener empleo",
+    "Post jobs": "Publicar empleos"
 }
