@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Vacant;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class VacantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view('vacants.index');
     }
@@ -18,7 +19,7 @@ class VacantController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('vacants.create');
     }

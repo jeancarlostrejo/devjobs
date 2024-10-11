@@ -6,17 +6,25 @@
     </div>
 
     <div>
-        <x-input-label for="salary" :value="__('Monthly salary')" />
-            <select name="salary" id="salary" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
+        <x-input-label for="category" :value="__('Category')" />
+            <select name="category" id="category" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
+                <option>-- {{ __('Select one') }} --</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
             </select>
-        <x-input-error :messages="$errors->get('salary')" class="mt-2" />
+        <x-input-error :messages="$errors->get('category')" class="mt-2" />
     </div>
 
     <div>
-        <x-input-label for="category" :value="__('Category')" />
-            <select name="category" id="category" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
+        <x-input-label for="salary" :value="__('Monthly salary')" />
+            <select name="salary" id="salary" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
+                <option>-- {{ __('Select one') }} --</option>
+                @foreach ($salaries as $salary)
+                    <option value="{{ $salary->id }}">{{ $salary->salary }}</option>
+                @endforeach
             </select>
-        <x-input-error :messages="$errors->get('category')" class="mt-2" />
+        <x-input-error :messages="$errors->get('salary')" class="mt-2" />
     </div>
 
     <div>
