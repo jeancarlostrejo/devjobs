@@ -48,6 +48,12 @@
     <div>
         <x-input-label for="image" :value="__('Image vacant')" />
         <x-text-input  id="image" class="block mt-1 w-full" type="file" wire:model="image" accept="image/*" />
+        <div class="my-5 w-80">
+            @if($image)
+                {{ __('Image') }}:
+                <img src="{{ $image->temporaryUrl() }}" alt="">
+            @endif
+        </div>
         <x-input-error :messages="$errors->get('image')" class="mt-2" />
     </div>
     <x-primary-button>{{ __('Create vacant') }}</x-primary-button>
