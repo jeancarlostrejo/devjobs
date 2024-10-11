@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Enums\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +17,15 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Jean Carlos Trejo',
+            'email' => 'test@test.com',
+            'rol' => Role::RECRUITER
+        ]);
 
-        $this->call(SalarySeeder::class);
+        $this->call([
+            SalarySeeder::class,
+            CategorySeeder::class
+        ]);
     }
 }
