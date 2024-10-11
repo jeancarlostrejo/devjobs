@@ -4,10 +4,40 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Salary;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateVacant extends Component
 {
+    use WithFileUploads;
+
+    #[Validate('required|min:3|max:255')]
+    public string $title;
+    
+    #[Validate('required|integer|exists:categories,id')]
+    public int $category;
+    
+    #[Validate('required|exists:salaries,id')]
+    public int $salary;
+    
+    #[Validate('required|string|max:150')]
+    public string $company;
+    
+    #[Validate('required|date')]
+    public $last_day_apply;
+
+    #[Validate('required')]
+    public $description;
+
+    #[Validate('required|image|max:1024')]
+    public $image;
+
+    public function store()
+    {
+        $this->validate();
+    }
+
     public function render()
     {
         $categories = Category::select(['id', 'name'])->get();
