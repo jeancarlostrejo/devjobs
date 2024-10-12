@@ -8,7 +8,7 @@
     <div>
         <x-input-label for="category" :value="__('Category')" />
             <select wire:model="category" id="category" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
-                <option>-- {{ __('Select') }} --</option>
+                <option value="">-- {{ __('Select') }} --</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}" {{ old('category') ? "selected" : "" }}>{{ $category->name }}</option>
                 @endforeach
@@ -19,7 +19,7 @@
     <div>
         <x-input-label for="salary" :value="__('Monthly salary')" />
             <select wire:model="salary" id="salary" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1">
-                <option>-- {{ __('Select') }} --</option>
+                <option value="">-- {{ __('Select') }} --</option>
                 @foreach ($salaries as $salary)
                     <option value="{{ $salary->id }}" {{ old('salary') ? "selected" : "" }}>{{ $salary->salary }}</option>
                 @endforeach
