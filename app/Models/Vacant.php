@@ -22,7 +22,7 @@ class Vacant extends Model
         'status'
     ];
 
-    protected $cast = [
+    protected $casts = [
         'last_day_apply' => 'date',
         'status' => Status::class
     ];
