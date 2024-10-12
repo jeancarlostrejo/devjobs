@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Salary;
+use App\Models\Vacant;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -35,7 +37,22 @@ class CreateVacant extends Component
 
     public function store()
     {
-        $this->validate();
+        $validated = $this->validate();
+
+        $validated['image'] = Storage::put('vacants', $this->image);
+
+        Vacant::create([
+            'title' => $validated['title'],
+            'category_id' => $validated['category'],
+            'salary_id' => $validated['salary'],
+            'company' => $validated['company'],
+            'last_day_apply' => $validated["last_day_apply"],
+            'description' => $validated["description"],
+            'image' => $validated['image'],
+            'user_id' => auth()->user()->id
+        ]);
+
+        return to_route('vacants.index')->with('message', __("The vacancy was successfully published"));
     }
 
     public function render()
