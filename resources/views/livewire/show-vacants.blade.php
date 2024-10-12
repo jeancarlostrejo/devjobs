@@ -21,4 +21,8 @@
             <p class="">{{ __("No vacancies") }}</p>
         </div>
     @endforelse
+
+    <div class="mt-10 mx-2">
+        {{ $vacants->links() }}
+    </div>
 </div>
