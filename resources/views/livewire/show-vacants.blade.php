@@ -16,13 +16,13 @@
                 
             </div>
         </div>
+
+        <div class="mt-10 mx-2">
+            {{ $vacants->links(data: ['scrollTo' => false]) }}
+        </div>
     @empty
         <div class="p-3 text-center text-sm text-gray-600">
             <p class="">{{ __("No vacancies") }}</p>
         </div>
     @endforelse
-
-    <div class="mt-10 mx-2">
-        {{ $vacants->links() }}
-    </div>
 </div>
