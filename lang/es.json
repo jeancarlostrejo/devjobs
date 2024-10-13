@@ -274,5 +274,7 @@
     "Edit vacant": "Editar vacante",
     "Current image": "Imagen actual",
     "Vacant image": "Imagen vacante",
-    "Save changes": "Guardar cambios"
+    "Save changes": "Guardar cambios",
+    "The vacancy has been successfully updated": "La vacante se actualizó correctamente",
+    "New image": "Nueva imagen"
 }
