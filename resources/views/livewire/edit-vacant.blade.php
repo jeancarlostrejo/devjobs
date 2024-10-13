@@ -1,4 +1,4 @@
-<form class="md:w-1/2 space-y-4" wire:submit='store'>
+<form class="md:w-1/2 space-y-4" wire:submit='updateVacant'>
     <div>
         <x-input-label for="title" :value="__('Title vacant')" />
         <x-text-input  id="title" class="block mt-1 w-full" type="text" wire:model="title" :value="old('title')" placeholder="{{ __('Title vacant') }}"/>
@@ -54,13 +54,21 @@
         </div>
 
         <div class="my-5 w-80">
+            <x-input-label :value="__('Current image')" />
+            <img src="{{ Storage::url($image) }}" alt="{{ __('Vacant image') . " ".  $title }}">
+        </div>
+
+        {{-- <div class="my-5 w-80">
             @if($image)
                 {{ __('Image') }}:
-                <img src="{{ $image->temporaryUrl() }}" alt="{{ __('Vacant image') }}">
+                <img src="{{ $image->temporaryUrl() }}" alt="">
             @endif
-        </div>
+        </div> --}}
 
         <x-input-error :messages="$errors->get('image')" class="mt-2" />
     </div>
-    <x-primary-button wire:loading.attr='disabled'>{{ __('Create vacant') }}</x-primary-button>
+    <div class="flex gap-4">
+        <x-primary-button wire:loading.attr='disabled'>{{ __('Save changes') }}</x-primary-button>
+        <a href="{{ route('vacants.index') }}" class="bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Cancel') }}</a>
+    </div>
 </form>

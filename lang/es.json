@@ -270,5 +270,9 @@
     "The vacancy was successfully published": "La vacante se publicó correctamente",
     "No vacancies": "Sin vacantes",
     "Candidates": "Candidatos",
-    "Loading preview image": "Cargando previsualización de la imagen"
+    "Loading preview image": "Cargando previsualización de la imagen",
+    "Edit vacant": "Editar vacante",
+    "Current image": "Imagen actual",
+    "Vacant image": "Imagen vacante",
+    "Save changes": "Guardar cambios"
 }

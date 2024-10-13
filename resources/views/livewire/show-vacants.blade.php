@@ -10,7 +10,7 @@
             <div class="flex flex-col items-stretch gap-3 mt-5 md:mt-0 text-center md:flex-row">
                 <a href="#" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Candidates') }}</a>
 
-                <a href="#" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Edit') }}</a>
+                <a href="{{ route('vacants.edit', $vacant) }}" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Edit') }}</a>
 
                 <a href="#" class="bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Delete') }}</a>
                 
