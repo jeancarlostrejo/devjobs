@@ -1,4 +1,4 @@
-<form class="md:w-1/2 space-y-4" wire:submit.prevent='store'>
+<form class="md:w-1/2 space-y-4" wire:submit='store'>
     <div>
         <x-input-label for="title" :value="__('Title vacant')" />
         <x-text-input  id="title" class="block mt-1 w-full" type="text" wire:model="title" :value="old('title')" placeholder="{{ __('Title vacant') }}"/>
@@ -48,13 +48,21 @@
     <div>
         <x-input-label for="image" :value="__('Image vacant')" />
         <x-text-input  id="image" class="block mt-1 w-full" type="file" wire:model="image" accept="image/*" />
+
+        <div wire:loading class="my-4 italic" wire:target='image'>
+            <p class="text-sm">{{ __("Loading preview image") }}...</p>
+        </div>
+
         <div class="my-5 w-80">
             @if($image)
                 {{ __('Image') }}:
                 <img src="{{ $image->temporaryUrl() }}" alt="">
             @endif
         </div>
+        <div>
+
+        </div>
         <x-input-error :messages="$errors->get('image')" class="mt-2" />
     </div>
-    <x-primary-button>{{ __('Create vacant') }}</x-primary-button>
+    <x-primary-button wire:loading.attr='disabled'>{{ __('Create vacant') }}</x-primary-button>
 </form>

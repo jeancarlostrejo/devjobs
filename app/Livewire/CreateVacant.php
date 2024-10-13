@@ -52,6 +52,8 @@ class CreateVacant extends Component
             'user_id' => auth()->user()->id
         ]);
 
+        $this->reset();
+
         return to_route('vacants.index')->with('message', __("The vacancy was successfully published"));
     }
 
