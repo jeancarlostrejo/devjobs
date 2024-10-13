@@ -43,8 +43,10 @@ class VacantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vacant $vacant)
+    public function edit(Vacant $vacant): View
     {
+        $this->authorize('update', $vacant);
+
         return view('vacants.edit', compact('vacant'));
     }
 

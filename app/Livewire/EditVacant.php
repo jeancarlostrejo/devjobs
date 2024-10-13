@@ -54,6 +54,8 @@ class EditVacant extends Component
 
     public function updateVacant()
     {
+        $this->authorize('update', $this->vacant);
+
         $validated = $this->validate();
 
         if($this->newImage){
