@@ -26,3 +26,27 @@
         </div>
     @endforelse
 </div>
+
+@push('scripts')
+    <script src="{{ asset('js/sweetAlert.js') }}"></script>
+    <script>
+        Swal.fire({
+            title: "{{ __('Delete Vacancy?') }}",
+            text: "{{ __('You won\'t be able to revert this!') }}",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "{{ __('Yes, delete it!') }}",
+            cancelButtonText: "{{ __('Cancel') }}"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "{{ __('Deleted!') }}",
+            text: "{{ __('Your vacancy has been deleted') }}",
+            icon: "success"
+            });
+        }
+        });
+    </script>
+@endpush

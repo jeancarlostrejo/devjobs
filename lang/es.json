@@ -276,5 +276,10 @@
     "Vacant image": "Imagen vacante",
     "Save changes": "Guardar cambios",
     "The vacancy has been successfully updated": "La vacante se actualizó correctamente",
-    "New image": "Nueva imagen"
+    "New image": "Nueva imagen",
+    "Delete Vacancy?": "¿Eliminar vacante?",
+    "You won't be able to revert this!": "¡No podrás revertir esto!",
+    "Yes, delete it!": "¡Sí, eliminar!",
+    "Deleted!": "¡Eliminado!",
+    "Your vacancy has been deleted": "Tu vacante ha sido eliminada"
 }
