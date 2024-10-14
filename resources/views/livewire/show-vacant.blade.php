@@ -7,9 +7,9 @@
 
            <p class="font-bold text-sm uppercase text-gray-800 my-3">{{ __('Last day to apply') }}: <span class="normal-case font-normal">{{ $vacant->last_day_apply->format('d-m-Y') }}</span></p>
 
-           <p class="font-bold text-sm uppercase text-gray-800 my-3">{{ __('Category') }}: <span class="normal-case font-normal">{{ $vacant->category_id }}</span></p>
+           <p class="font-bold text-sm uppercase text-gray-800 my-3">{{ __('Category') }}: <span class="normal-case font-normal">{{ $vacant->category->name }}</span></p>
 
-           <p class="font-bold text-sm uppercase text-gray-800 my-3">{{ __('Monthly salary') }}: <span class="normal-case font-normal">{{ $vacant->salary_id }}</span></p>
+           <p class="font-bold text-sm uppercase text-gray-800 my-3">{{ __('Monthly salary') }}: <span class="normal-case font-normal">{{ $vacant->salary->salary }}</span></p>
        </div>
     </div>
 </div>

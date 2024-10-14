@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\Status;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Vacant extends Model
 {
@@ -26,4 +27,14 @@ class Vacant extends Model
         'last_day_apply' => 'date',
         'status' => Status::class
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function salary(): BelongsTo
+    {
+        return $this->belongsTo(Salary::class);
+    }
 }

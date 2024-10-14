@@ -37,6 +37,8 @@ class VacantController extends Controller
      */
     public function show(Vacant $vacant): View
     {
+        $vacant->load(['category:id,name', 'salary:id,salary']);
+
         return view('vacants.show', compact('vacant'));
     }
 
