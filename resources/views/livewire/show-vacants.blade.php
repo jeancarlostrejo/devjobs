@@ -2,7 +2,7 @@
     @forelse ($vacants as $vacant)
         <div class="p-6 bg-white border-b border-gray-200 md:flex md:justify-between md:items-center">
             <div class="space-y-3">
-                <a href="#" class="text-xl font-bold">{{ $vacant->title }}</a>
+                <a href="{{ route('vacants.show', $vacant) }}" class="text-xl font-bold">{{ $vacant->title }}</a>
                 <p class="text-sm text-gray-600 font-bold">{{ $vacant->company }}</p>
                 <p class="text-sm text-gray-500">{{ __('Last day to apply') }}: {{ $vacant->last_day_apply->format('d-m-Y') }}</p>
             </div>

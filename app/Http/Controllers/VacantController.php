@@ -35,9 +35,9 @@ class VacantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vacant $vacant)
+    public function show(Vacant $vacant): View
     {
-        //
+        return view('vacants.show', compact('vacant'));
     }
 
     /**
