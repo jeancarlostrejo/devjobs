@@ -13,6 +13,8 @@ class VacantController extends Controller
      */
     public function index(): View
     {
+        $this->authorize('viewAny', Vacant::class);
+
         return view('vacants.index');
     }
 
@@ -21,6 +23,8 @@ class VacantController extends Controller
      */
     public function create(): View
     {
+        $this->authorize('create', Vacant::class);
+
         return view('vacants.create');
     }
 

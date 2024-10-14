@@ -37,6 +37,8 @@ class CreateVacant extends Component
 
     public function store()
     {
+        $this->authorize('create', Vacant::class);
+
         $validated = $this->validate();
 
         $validated['image'] = Storage::put('vacants', $this->image);

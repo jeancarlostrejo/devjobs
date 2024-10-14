@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\Role;
 use App\Models\User;
 use App\Models\Vacant;
 use Illuminate\Auth\Access\Response;
@@ -13,7 +14,7 @@ class VacantPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->rol === Role::RECRUITER;
     }
 
     /**
@@ -29,7 +30,7 @@ class VacantPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->rol === Role::RECRUITER;
     }
 
     /**
