@@ -12,7 +12,7 @@
 
                 <a href="{{ route('vacants.edit', $vacant) }}" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Edit') }}</a>
 
-                <a href="#" class="bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Delete') }}</a>
+                <button wire:click="$dispatch('show-alert', {vacantId: {{ $vacant->id }}})" class="bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Delete') }}</button>
                 
             </div>
         </div>
@@ -29,24 +29,30 @@
 
 @push('scripts')
     <script src="{{ asset('js/sweetAlert.js') }}"></script>
-    <script>
-        Swal.fire({
-            title: "{{ __('Delete Vacancy?') }}",
-            text: "{{ __('You won\'t be able to revert this!') }}",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "{{ __('Yes, delete it!') }}",
-            cancelButtonText: "{{ __('Cancel') }}"
-        }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-            title: "{{ __('Deleted!') }}",
-            text: "{{ __('Your vacancy has been deleted') }}",
-            icon: "success"
-            });
-        }
-        });
-    </script>
+    @script
+        <script>
+            $wire.on('show-alert', vacantId => {
+                Swal.fire({
+                    title: "{{ __('Delete Vacancy?') }}",
+                    text: "{{ __('You won\'t be able to revert this!') }}",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "{{ __('Yes, delete it!') }}",
+                    cancelButtonText: "{{ __('Cancel') }}"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $wire.dispatch('delete-vacant', {vacant: vacantId})
+
+                    Swal.fire({
+                    title: "{{ __('Deleted!') }}",
+                    text: "{{ __('Your vacancy has been deleted') }}",
+                    icon: "success"
+                    });
+                }
+                });
+            })
+        </script>
+    @endscript
 @endpush
