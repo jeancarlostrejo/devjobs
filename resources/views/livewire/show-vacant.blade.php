@@ -11,15 +11,21 @@
 
            <p class="font-bold text-sm uppercase text-gray-800 my-3">{{ __('Monthly salary') }}: <span class="normal-case font-normal">{{ $vacant->salary->salary }}</span></p>
        </div>
-
-       <div class="md:grid md:grid-cols-6 gap-4">
-            <div class="md:col-span-2">
-                <img src="{{ Storage::url($vacant->image) }}" alt="{{ __('Vacant image') . " ".  $vacant->title }}">
-            </div>
-            <div class="md:col-span-4 sm:mt-5 md:mt-0">
-                <h2 class="text-2xl font-bold mb-5">{{ __('Description of vacant') }}</h2>
-                <p>{{ $vacant->description }}</p>
-            </div>
-       </div>
     </div>
+
+    <div class="md:grid md:grid-cols-6 gap-4">
+         <div class="md:col-span-2">
+             <img src="{{ Storage::url($vacant->image) }}" alt="{{ __('Vacant image') . " ".  $vacant->title }}">
+         </div>
+         <div class="md:col-span-4 mt-5 md:mt-0">
+             <h3 class="text-2xl font-bold mb-5">{{ __('Description of vacant') }}</h3>
+             <p>{{ $vacant->description }}</p>
+         </div>
+    </div>
+
+    @guest
+        <div class="mt-5 bg-gray-50 border border-dashed p-5 text-center">
+            <p>{{ __('Do you want to apply for this vacancy?') }} <a href="{{ route('register') }}" class="font-bold text-indigo-600">{{ __('Get an account and apply to this and other vacancies') }}</a></p>
+        </div>
+    @endguest
 </div>
