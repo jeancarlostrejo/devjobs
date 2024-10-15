@@ -28,4 +28,11 @@
             <p>{{ __('Do you want to apply for this vacancy?') }} <a href="{{ route('register') }}" class="font-bold text-indigo-600">{{ __('Get an account and apply to this and other vacancies') }}</a></p>
         </div>
     @endguest
+
+    @auth
+        @cannot('create', App\Models\Vacant::Class)
+            <livewire:apply-vacancy />
+        @endcannot
+    @endauth
+
 </div>
