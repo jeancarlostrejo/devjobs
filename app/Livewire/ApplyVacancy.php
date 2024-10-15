@@ -35,6 +35,8 @@ class ApplyVacancy extends Component
         ]);
 
         $this->reset();
+
+        return redirect()->back()->with('message', __('Your information was sent correctly, good luck!'));
     }
 
     public function render()
