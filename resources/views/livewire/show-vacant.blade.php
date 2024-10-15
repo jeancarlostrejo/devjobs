@@ -31,7 +31,7 @@
 
     @auth
         @cannot('create', App\Models\Vacant::Class)
-            <livewire:apply-vacancy />
+            <livewire:apply-vacancy :$vacant/>
         @endcannot
     @endauth
 

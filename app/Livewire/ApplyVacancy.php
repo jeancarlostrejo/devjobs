@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Vacant;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,12 +15,28 @@ class ApplyVacancy extends Component
     #[Validate('required|mimes:pdf')]
     public $cv;
 
+    public $vacant;
+
+    public function mount(Vacant $vacant)
+    {
+        $this->vacant = $vacant;
+    }
+
     public function apply()
     {
-        $this->validate();
+        $this->authorize('apply', Vacant::class);
 
+        $validated = $this->validate();
+        $validated['cv'] = Storage::put('cvs', $this->cv);
 
+        $this->vacant->candidates()->create([
+            'cv' => $validated["cv"],
+            'user_id' => auth()->user()->id
+        ]);
+
+        $this->reset();
     }
+
     public function render()
     {
         return view('livewire.apply-vacancy');

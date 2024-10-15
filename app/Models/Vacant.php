@@ -6,6 +6,7 @@ use App\Enums\Status;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vacant extends Model
 {
@@ -36,5 +37,10 @@ class Vacant extends Model
     public function salary(): BelongsTo
     {
         return $this->belongsTo(Salary::class);
+    }
+
+    public function candidates(): HasMany
+    {
+        return $this->hasMany(Candidate::class);
     }
 }

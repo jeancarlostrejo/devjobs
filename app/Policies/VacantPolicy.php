@@ -41,6 +41,11 @@ class VacantPolicy
         return $user->id === $vacant->user_id;
     }
 
+    public function apply(User $user)
+    {
+        return $user->rol === Role::DEVELOPER;
+    }
+
     /**
      * Determine whether the user can delete the model.
      */

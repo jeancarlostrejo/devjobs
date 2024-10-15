@@ -8,6 +8,6 @@
             <x-input-error :messages="$errors->get('cv')" class="mt-2" />
         </div>
 
-        <x-primary-button class="my-5">{{ __('Apply') }}</x-primary-button>
+        <x-primary-button wire:loading.attr='disabled' class="my-5">{{ __('Apply') }}</x-primary-button>
     </form>
 </div>
