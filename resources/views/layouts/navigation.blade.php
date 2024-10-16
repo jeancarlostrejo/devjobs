@@ -27,6 +27,14 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 @auth
+                    @if(auth()->user()->rol === App\Enums\Role::RECRUITER)
+                        <a href="{{ route('notifications') }}">
+                            <span class="shrink-0 rounded-full bg-blue-700 px-3 font-mono text-md font-medium tracking-tight text-white" title="{{ __('Notifications') }}">
+                            {{ auth()->user()->unreadNotifications->count() }}
+                            </span>
+                        </a>
+                    @endif
+
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -94,6 +102,16 @@
                 <x-responsive-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
                     {{ __('Create vacant') }}
                 </x-responsive-nav-link>
+                <div class="flex gap-1 items-center p-3 border-t border-gray-200">
+                    <a href="{{ route('notifications') }}" class="flex gap-2 items-center">
+                        <span class="shrink-0 rounded-full bg-blue-700 px-3 font-mono text-md font-medium tracking-tight text-white" title="{{ __('Notifications') }}">
+                        {{ $countNotifications = auth()->user()->unreadNotifications->count() }}
+                        </span>
+                        <p class="text-base font-medium text-gray-600">
+                            @choice(__('Notification') . "|" . __('Notifications'), $countNotifications)
+                        </p>
+                    </a>
+                </div>
             </div>
 
             <!-- Responsive Settings Options -->
