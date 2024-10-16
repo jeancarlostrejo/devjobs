@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacantController;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Notifications
+Route::get('/notifications', NotificationController::class)->name('notifications');
 require __DIR__.'/auth.php';
