@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Vacant;
+use App\Notifications\NewCandidate;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -33,6 +34,8 @@ class ApplyVacancy extends Component
             'cv' => $validated["cv"],
             'user_id' => auth()->user()->id
         ]);
+
+        $this->vacant->recruiter->notify(new NewCandidate($this->vacant, auth()->user()));
 
         $this->reset();
 
