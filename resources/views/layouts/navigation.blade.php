@@ -11,15 +11,17 @@
                 </div>
 
                 @auth
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
-                            {{ __('My vacants') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
-                            {{ __('Create vacant') }}
-                        </x-nav-link>
-                    </div>
+                    @can('create', App\Models\Vacant::class)
+                        <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
+                                {{ __('My vacants') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
+                                {{ __('Create vacant') }}
+                            </x-nav-link>
+                        </div>
+                    @endcan
                 @endauth
 
             </div>
@@ -27,13 +29,13 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 @auth
-                    @if(auth()->user()->rol === App\Enums\Role::RECRUITER)
+                    @can('create', App\Models\Vacant::class)
                         <a href="{{ route('notifications') }}">
                             <span class="shrink-0 rounded-full bg-blue-700 px-3 font-mono text-md font-medium tracking-tight text-white" title="{{ __('Notifications') }}">
                             {{ auth()->user()->unreadNotifications->count() }}
                             </span>
                         </a>
-                    @endif
+                    @endcan
 
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

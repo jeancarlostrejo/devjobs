@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/dashboard', [VacantController::class, 'index'])->middleware(['auth', 'verified'])->name('vacants.index');
+Route::get('/dashboard', [VacantController::class, 'index'])->middleware(['auth', 'verified', 'role.recruiter'])->name('vacants.index');
 Route::get('/vacants/create',[VacantController::class, 'create'])->middleware(['auth', 'verified'])->name('vacants.create');
 Route::get('/vacants/{vacant}/edit', [VacantController::class, 'edit'])->middleware(['auth', 'verified'])->name('vacants.edit');
 Route::get('/vacants/{vacant}', [VacantController::class, 'show'])->name('vacants.show');
