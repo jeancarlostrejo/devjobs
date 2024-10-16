@@ -41,7 +41,7 @@ class Vacant extends Model
 
     public function candidates(): HasMany
     {
-        return $this->hasMany(Candidate::class);
+        return $this->hasMany(Candidate::class)->latest();
     }
 
     public function recruiter(): BelongsTo

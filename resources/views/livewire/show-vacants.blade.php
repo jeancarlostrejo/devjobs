@@ -8,7 +8,9 @@
             </div>
 
             <div class="flex flex-col items-stretch gap-3 mt-5 md:mt-0 text-center md:flex-row">
-                <a href="{{ route('candidates.index', $vacant) }}" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Candidates') }}</a>
+                <a href="{{ route('candidates.index', $vacant) }}" class="bg-slate-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">
+                   {{ $vacant->candidates_count }} {{ __('Candidates') }}
+                </a>
 
                 <a href="{{ route('vacants.edit', $vacant) }}" class="bg-blue-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ __('Edit') }}</a>
 
