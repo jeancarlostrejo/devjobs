@@ -25,7 +25,7 @@
                                 </div>
     
                                 <div class="mt-5 lg:mt-0">
-                                    <a href="{{ route('candidates.index', $notification->data["vacant_id"]) }}" class="bg-indigo-800 p-3 text-sm uppercase font-bold text-white rounded-lg hover:bg-indigo-900" target="_blank">{{ __('See candidates') }}</a>
+                                    <a href="{{ route('candidates.index', $notification->data["vacant_id"]) }}" class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg hover:bg-indigo-600" target="_blank">{{ __('See candidates') }}</a>
                                 </div>
                             </div>
                         @empty
