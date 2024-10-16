@@ -22,7 +22,15 @@ class HomeVacancies extends Component
 
     public function render()
     {
-        $vacancies = Vacant::all();
+        $vacancies = Vacant::with(['salary', 'category'])->when($this->term, function ($query) {
+            $query->where('title', "LIKE", "%" . $this->term . "%");
+        })->when($this->term, function ($query) {
+            $query->orWhere('company', "LIKE", "%" . $this->term . "%");
+        })->when($this->category, function ($query) {
+            $query->where('category_id', $this->category);
+        })->when($this->salary, function ($query) {
+            $query->where('salary_id', $this->salary);
+        })->get();
 
         return view('livewire.home-vacancies', compact('vacancies'));
     }

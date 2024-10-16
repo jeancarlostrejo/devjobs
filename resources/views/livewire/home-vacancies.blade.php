@@ -11,6 +11,8 @@
                     <div class="md:flex-1">
                         <a href="{{ route('vacants.show', $vacant) }}" class="text-3xl font-extrabold text-gray-600">{{ $vacant->title }}</a>
                         <p class="text-base text-gray-600 mb-1">{{ $vacant->company }}</p>
+                        <p class="text-xs font-bold text-gray-600 mb-1">{{ $vacant->category->name }}</p>
+                        <p class="text-base text-gray-600 mb-1">{{ $vacant->salary->salary }}</p>
                         <p class="font-bold text-xs text-gray-600">{{ __("Last day to apply") }}: 
                             <span class="font-normal">{{ $vacant->last_day_apply->format('d-m-Y') }}
                             </span>
