@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', [VacantController::class, 'index'])->middleware(['auth', 'verified'])->name('vacants.index');
 Route::get('/vacants/create',[VacantController::class, 'create'])->middleware(['auth', 'verified'])->name('vacants.create');
@@ -32,5 +32,5 @@ Route::middleware('auth')->group(function () {
 });
 
 //Notifications
-Route::get('/notifications', NotificationController::class)->name('notifications');
+Route::get('/notifications', NotificationController::class)->middleware(['auth', 'verified', 'role.recruiter'])->name('notifications');
 require __DIR__.'/auth.php';
