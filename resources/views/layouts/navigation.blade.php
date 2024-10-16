@@ -97,24 +97,26 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         @auth
-            <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
-                    {{ __('My vacants') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
-                    {{ __('Create vacant') }}
-                </x-responsive-nav-link>
-                <div class="flex gap-1 items-center p-3 border-t border-gray-200">
-                    <a href="{{ route('notifications') }}" class="flex gap-2 items-center">
-                        <span class="shrink-0 rounded-full bg-blue-700 px-3 font-mono text-md font-medium tracking-tight text-white" title="{{ __('Notifications') }}">
-                        {{ $countNotifications = auth()->user()->unreadNotifications->count() }}
-                        </span>
-                        <p class="text-base font-medium text-gray-600">
-                            @choice(__('Notification') . "|" . __('Notifications'), $countNotifications)
-                        </p>
-                    </a>
+            @can('create', App\Models\Vacant::class)
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
+                        {{ __('My vacants') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
+                        {{ __('Create vacant') }}
+                    </x-responsive-nav-link>
+                    <div class="flex gap-1 items-center p-3 border-t border-gray-200">
+                        <a href="{{ route('notifications') }}" class="flex gap-2 items-center">
+                            <span class="shrink-0 rounded-full bg-blue-700 px-3 font-mono text-md font-medium tracking-tight text-white" title="{{ __('Notifications') }}">
+                            {{ $countNotifications = auth()->user()->unreadNotifications->count() }}
+                            </span>
+                            <p class="text-base font-medium text-gray-600">
+                                @choice(__('Notification') . "|" . __('Notifications'), $countNotifications)
+                            </p>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endcan
 
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200">
