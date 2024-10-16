@@ -12,7 +12,12 @@ class NotificationController extends Controller
      */
     public function __invoke(Request $request): View
     {
+        //Notifications will only be shown once
+
         $notifications = auth()->user()->unreadNotifications;
+
+        //Clear notifications
+        auth()->user()->unreadNotifications->markAsRead();
 
         return view('notifications.index', compact('notifications'));
     }
