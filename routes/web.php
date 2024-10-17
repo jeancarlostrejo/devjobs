@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\DownloadCvController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
@@ -35,3 +36,6 @@ Route::middleware('auth')->group(function () {
 //Notifications
 Route::get('/notifications', NotificationController::class)->middleware(['auth', 'verified', 'role.recruiter'])->name('notifications');
 require __DIR__.'/auth.php';
+
+//Download cv
+Route::get('/download-cv/{vacant}/{candidate}', DownloadCvController::class)->middleware(['auth', 'verified', 'role.recruiter'])->name('download.cv');

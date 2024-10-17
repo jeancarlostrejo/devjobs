@@ -23,7 +23,7 @@
                                     </div>
 
                                     <div>
-                                        <a href="{{ Storage::url($candidate->cv) }}" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font font-medium rounded-full text-gray-700 bg-white hover:bg-gray-200" target="_blank" rel="noreferrer noopener">{{ __("See CV") }}</a>
+                                        <a href="{{ route('download.cv', [$vacant, $candidate]) }}" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font font-medium rounded-full text-gray-700 bg-white hover:bg-gray-200" target="_blank" rel="noreferrer noopener">{{ __("See CV") }}</a>
                                     </div>
                                 </li>
                             @empty

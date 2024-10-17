@@ -28,7 +28,7 @@ class ApplyVacancy extends Component
         $this->authorize('apply', Vacant::class);
 
         $validated = $this->validate();
-        $validated['cv'] = Storage::put('cvs', $this->cv);
+        $validated['cv'] = Storage::disk('local')->put('cv', $this->cv);
 
         $this->vacant->candidates()->create([
             'cv' => $validated["cv"],
