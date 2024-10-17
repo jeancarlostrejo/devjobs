@@ -28,6 +28,9 @@
                     <p class="p-3 text-center text-sm text-gray-600">{{ __("There are no vacancies yet") }}</p>
                 @endforelse
             </div>
+            <div class="mt-10 mx-4 md:mx-0 md:mt-4">
+                {{ $vacancies->links(data: ["scrollTo" => false]) }}
+            </div>
         </div>
     </div>
 </div>

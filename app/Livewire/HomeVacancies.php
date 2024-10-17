@@ -5,9 +5,12 @@ namespace App\Livewire;
 use App\Models\Vacant;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class HomeVacancies extends Component
 {
+    use WithPagination;
+
     public $term;
     public $category;
     public $salary;
@@ -30,7 +33,7 @@ class HomeVacancies extends Component
             $query->where('category_id', $this->category);
         })->when($this->salary, function ($query) {
             $query->where('salary_id', $this->salary);
-        })->get();
+        })->paginate(10);
 
         return view('livewire.home-vacancies', compact('vacancies'));
     }
