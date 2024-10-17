@@ -35,7 +35,7 @@ class HomeVacancies extends Component
         })->when($this->salary, function ($query) {
             $query->where('salary_id', $this->salary);
         })->whereDate('last_day_apply', ">=", Carbon::today())
-        ->oldest('last_day_apply')
+        ->latest('last_day_apply')
         ->paginate(10);
 
         return view('livewire.home-vacancies', compact('vacancies'));
