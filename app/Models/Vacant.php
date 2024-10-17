@@ -48,4 +48,9 @@ class Vacant extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function checkApply(User $user)
+    {
+        return $this->candidates->contains('user_id', $user->id);
+    }
 }

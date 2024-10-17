@@ -25,7 +25,7 @@ class ApplyVacancy extends Component
 
     public function apply()
     {
-        $this->authorize('apply', Vacant::class);
+        $this->authorize('apply', $this->vacant);
 
         $validated = $this->validate();
         $validated['cv'] = Storage::disk('local')->put('cv', $this->cv);

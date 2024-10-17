@@ -41,9 +41,9 @@ class VacantPolicy
         return $user->id === $vacant->user_id;
     }
 
-    public function apply(User $user)
+    public function apply(User $user, Vacant $vacant)
     {
-        return $user->rol === Role::DEVELOPER;
+        return !($vacant->checkApply($user)) && $user->rol === Role::DEVELOPER;
     }
 
     /**

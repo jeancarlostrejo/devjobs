@@ -31,7 +31,11 @@
 
     @auth
         @cannot('create', App\Models\Vacant::Class)
-            <livewire:apply-vacancy :$vacant/>
+            @can('apply', $vacant)
+                <livewire:apply-vacancy :$vacant/>
+            @else
+                <h3 class="text-center text-2xl font-extrabold my-5 text-green-800 underline">{{ __("You already applied for this vacancy!") }}</h3>
+            @endcan
         @endcannot
     @endauth
 
