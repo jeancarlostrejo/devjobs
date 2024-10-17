@@ -13,7 +13,7 @@ class ApplyVacancy extends Component
 {
     use WithFileUploads;
 
-    #[Validate('required|mimes:pdf')]
+    #[Validate('required|mimes:pdf|max:2048')]
     public $cv;
 
     public $vacant;
