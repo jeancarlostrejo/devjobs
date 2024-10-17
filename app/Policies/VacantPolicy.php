@@ -20,9 +20,9 @@ class VacantPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Vacant $vacant)
+    public function viewCandidates(User $user, Vacant $vacant)
     {
-        //
+        return $user->id === $vacant->user_id;
     }
 
     /**

@@ -25,7 +25,7 @@ Route::get('/dashboard', [VacantController::class, 'index'])->middleware(['auth'
 Route::get('/vacants/create',[VacantController::class, 'create'])->middleware(['auth', 'verified'])->name('vacants.create');
 Route::get('/vacants/{vacant}/edit', [VacantController::class, 'edit'])->middleware(['auth', 'verified'])->name('vacants.edit');
 Route::get('/vacants/{vacant}', [VacantController::class, 'show'])->name('vacants.show');
-Route::get('/candidates/{vacant}', [CandidateController::class, 'index'])->name('candidates.index');
+Route::get('/candidates/{vacant}', [CandidateController::class, 'index'])->middleware(['auth', 'verified', 'role.recruiter'])->name('candidates.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

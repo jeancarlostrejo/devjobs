@@ -10,6 +10,8 @@ class CandidateController extends Controller
 {
     public function index(Vacant $vacant): View
     {
+        $this->authorize('viewCandidates', $vacant);
+
         $vacant->load('candidates.user');
 
         return view('candidates.index', compact('vacant'));
