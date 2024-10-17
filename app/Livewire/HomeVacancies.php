@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Vacant;
+use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -33,7 +34,9 @@ class HomeVacancies extends Component
             $query->where('category_id', $this->category);
         })->when($this->salary, function ($query) {
             $query->where('salary_id', $this->salary);
-        })->paginate(10);
+        })->whereDate('last_day_apply', ">=", Carbon::today())
+        ->oldest('last_day_apply')
+        ->paginate(10);
 
         return view('livewire.home-vacancies', compact('vacancies'));
     }
