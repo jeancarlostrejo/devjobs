@@ -53,12 +53,12 @@
             <p class="text-sm">{{ __("Loading preview image") }}...</p>
         </div>
 
-        <div class="my-5 w-80">
+        <div class="my-5 md:w-80">
             <x-input-label :value="__('Current image')" />
             <img src="{{ Storage::url($image) }}" alt="{{ __('Vacant image') . " ".  $title }}">
         </div>
 
-        <div class="my-5 w-80">
+        <div class="my-5 md:w-80">
             @if($newImage)
                 <x-input-label :value="__('New image')" />
                 <img src="{{ $newImage->temporaryUrl() }}" alt="{{ __('Vacant image') }}">
