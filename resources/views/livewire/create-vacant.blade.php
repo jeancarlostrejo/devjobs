@@ -62,5 +62,5 @@
 
         <x-input-error :messages="$errors->get('image')" class="mt-2" />
     </div>
-    <x-primary-button wire:loading.attr='disabled'>{{ __('Create vacant') }}</x-primary-button>
+    <x-primary-button wire:loading.attr='disabled' wire:target="image">{{ __('Create vacant') }}</x-primary-button>
 </form>

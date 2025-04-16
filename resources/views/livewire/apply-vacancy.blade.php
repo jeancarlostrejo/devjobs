@@ -18,11 +18,15 @@
         <form wire:submit='apply' class="w-96 mt-5">
             <div class="mb-4">
                 <x-input-label for="cv" :value="__('Curriculum vitae or resume (PDF)')" />
-                <x-text-input id="cv" type="file" wire:model='cv' accept=".pdf" class="block mt-1 w-full" />
+                <x-text-input id="cv" type="file" wire:model.live='cv' accept=".pdf" class="block mt-1 w-full" />
                 <x-input-error :messages="$errors->get('cv')" class="mt-2" />
             </div>
 
-            <x-primary-button wire:loading.attr='disabled' class="my-5">{{ __('Apply') }}</x-primary-button>
+                <x-primary-button wire:loading.attr='disabled' wire:target="cv" class="my-5">{{ __('Apply') }}</x-primary-button>
+                    
+            <div wire:loading class="my-4 italic" wire:target='cv'>
+                <p class="text-sm">{{ __("Uploading") }}...</p>
+            </div>
         </form>
     @endif
 </div>
